@@ -10,10 +10,12 @@ Backend
 - Unit tests
 
 Frontend
-- Written in React JSX
+- Written in React JSX, with VITE 
 - Handle Edit of existing polygon (little surprise, thought it would be fun to do), allow you to intuitively and visually resize, move and add edges to an existing polygon.
 - Added a polished design (for a homework :)
 - UI tests
+
+Further improvement possible => TSX for the frontend (but it's a bit late, need a bit of sleep)
 
 Hope you like it :)
 
