@@ -1,0 +1,13 @@
+.canvas-wrapper{flex:1;width:100%;height:100%;display:flex;flex-direction:column;align-items:stretch;position:relative}
+.controls{position:absolute;bottom:16px;left:50%;transform:translateX(-50%);display:flex;gap:.5rem;background:rgba(0,0,0,0.6);padding:.5rem 1rem;border-radius:6px}
+.controls input{background:#fff;border-radius:4px;font-size:1rem;padding:.5rem 1rem;min-width:220px}
+.controls button{background:#3182ce;color:#fff;border:none;border-radius:4px;font-size:1rem;padding:.5rem 1rem;cursor:pointer}
+.controls button:disabled{background:#4a5568}
+
+.canvas-element{width:100%;height:100%}
+.canvas-element.pointer{cursor:pointer}
+.canvas-element.crosshair{cursor:crosshair}
+
+.visible-label{position:absolute;bottom:10px;left:50%;transform:translateX(-50%);background:rgba(0,0,0,0.6);color:#fff;padding:8px 12px;border-radius:4px;font-size:1rem;pointer-events:none}
+
+.poly-title{color:#fff;font-size:1.2rem;font-weight:bold} 

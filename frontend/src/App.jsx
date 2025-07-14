@@ -3,6 +3,7 @@ import PolygonCanvas from './components/PolygonCanvas';
 import { getPolygons, deletePolygon, createPolygon, updatePolygon } from './api';
 import Loader from './components/Loader';
 import InfoModal from './components/InfoModal';
+import './css/sidebar.css';
 
 export default function App() {
   const [polygons, setPolygons] = useState([]);
@@ -144,27 +145,23 @@ export default function App() {
             <li
               key={p.id}
               className={`${selected === p.id ? 'active' : ''} ${!hiddenIds.has(p.id) ? 'visible' : ''}`.trim()}
+              onClick={() => {
+                // Show only this polygon
+                setSelected(p.id);
+                setEditMode(false);
+                setCreateMode(false);
+                setHiddenIds(new Set(polygons.filter(pl => pl.id !== p.id).map(pl => pl.id)));
+              }}
             >
-              <span
-                className="poly-name"
-                onClick={() => {
-                  // Show only this polygon
-                  setSelected(p.id);
-                  setEditMode(false);
-                  setCreateMode(false);
-                  setHiddenIds(new Set(polygons.filter(pl => pl.id !== p.id).map(pl => pl.id)));
-                }}
-              >
-                {p.name}
-              </span>
-              <div className="row-actions">
-                <button className="view" title="Show / Hide" onClick={() => handleViewToggle(p.id)} disabled={editMode}>
+              <span className="poly-name">{p.name}</span>
+              <div className="row-actions" onClick={(e)=>e.stopPropagation()}>
+                <button className="view" title="Show / Hide" onClick={(e) => {e.stopPropagation(); handleViewToggle(p.id);}} disabled={editMode}>
                   {!hiddenIds.has(p.id) ? '🚫' : '👁'}
                 </button>
-                <button className="edit" title={selected===p.id && editMode ? 'Exit edit' : 'Edit'} onClick={() => handleEdit(p.id)}>
+                <button className="edit" title={selected===p.id && editMode ? 'Exit edit' : 'Edit'} onClick={(e)=>{e.stopPropagation(); handleEdit(p.id);}}>
                   {selected === p.id && editMode ? '✅' : '✎'}
                 </button>
-                <button className="delete" title="Delete" onClick={() => handleDelete(p.id)}>
+                <button className="delete" title="Delete" onClick={(e)=>{e.stopPropagation(); handleDelete(p.id);}}>
                   ✕
                 </button>
               </div>

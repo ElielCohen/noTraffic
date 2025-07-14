@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
+import '../css/canvas.css';
 
 const BG_URL = 'https://picsum.photos/1920/1080';
 
@@ -317,10 +318,10 @@ export default function PolygonCanvas({ polygon, otherPolygons = [], editMode, c
         onMouseDown={handleMouseDown}
         onMouseMove={handleMouseMove}
         onMouseUp={handleMouseUp}
-        style={{ cursor: editMode && polygon ? 'pointer' : 'crosshair', width:'100%', height:'100%' }}
+        className={`canvas-element ${editMode && polygon ? 'pointer' : 'crosshair'}`}
       />
       {visibleCount > 0 && (
-        <div style={{position:'absolute',bottom:'10px',left:'50%',transform:'translateX(-50%)',background:'rgba(0,0,0,0.6)',color:'#fff',padding:'8px 12px',borderRadius:'4px',fontSize:'1rem',pointerEvents:'none'}}>
+        <div className="visible-label">
           {visibleLabel}
         </div>
       )}
@@ -328,7 +329,7 @@ export default function PolygonCanvas({ polygon, otherPolygons = [], editMode, c
         <div className="controls">
           {(!editMode && !createMode) ? (
             visibleCount > 0 && (
-              <span style={{color:'#fff',fontSize:'1.2rem',fontWeight:'bold'}}>{visibleLabel}</span>
+              <span className="poly-title">{visibleLabel}</span>
             )
           ) : (
             <input
