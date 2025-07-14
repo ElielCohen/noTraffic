@@ -11,9 +11,9 @@ Point = conlist(float, min_length=2, max_length=2)  # type: ignore[type-arg]
 class PolygonBase(BaseModel):
     """Shared attributes for Polygon models."""
 
-    name: str = Field(..., example="P1", description="Human-friendly polygon name")
+    name: str = Field(..., description="Human-friendly polygon name", json_schema_extra={"example": "P1"})
     points: List[Point] = Field(
-        ..., example=[[12.3, 12.0], [16.3, 12.0], [16.3, 8.0], [12.3, 8.0]], description="Ordered list of 2-D points"
+        ..., description="Ordered list of 2-D points", json_schema_extra={"example": [[12.3, 12.0], [16.3, 12.0], [16.3, 8.0], [12.3, 8.0]]}
     )
 
     # Ensure we have at least three vertices to form a polygon
@@ -44,6 +44,6 @@ class PolygonUpdate(BaseModel):
 class Polygon(PolygonBase):
     """Representation returned by the API (includes generated ID)."""
 
-    id: int = Field(..., example=1, description="Unique polygon identifier")
+    id: int = Field(..., description="Unique polygon identifier", json_schema_extra={"example": 1})
 
     model_config = {"from_attributes": True} 

@@ -78,9 +78,9 @@ async def delete_polygon(polygon_id: int) -> Response:
 
 # ------------------------- Application entrypoint -------------------------
 
-# When using `uvicorn backend.main:app` this block is ignored, but allows
-# running `python -m backend.main` directly during local development.
+# When using `uvicorn src.main:app` this block is ignored, but allows
+# running `python -m src.main` directly during local development.
 if __name__ == "__main__":
     import uvicorn
 
-    uvicorn.run("backend.main:app", host="0.0.0.0", port=8080, reload=True) 
+    uvicorn.run("src.main:app", host="0.0.0.0", port=8080, reload=True) 

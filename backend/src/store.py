@@ -59,7 +59,7 @@ class PolygonStore:
         """Create and persist a new polygon."""
         with self._lock:
             time.sleep(5)  # Simulate processing time and serialize concurrent requests
-            polygon_data = polygon_in.dict()
+            polygon_data = polygon_in.model_dump()
             polygon_data["id"] = self._get_next_id()
             self._db.insert(polygon_data)
             return Polygon(**polygon_data)
@@ -82,8 +82,8 @@ class PolygonStore:
             polygon = self.get_polygon(polygon_id)
             if polygon is None:
                 return None
-            update_data = polygon_in.dict(exclude_unset=True)
-            updated = polygon.dict()
+            update_data = polygon_in.model_dump(exclude_unset=True)
+            updated = polygon.model_dump()
             updated.update(update_data)
             # TinyDB uses doc_id internally; we can update using Query
             self._db.update(updated, Query().id == polygon_id)

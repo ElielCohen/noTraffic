@@ -81,12 +81,10 @@ Swagger / OpenAPI docs: `http://localhost:8080/docs`
 
 ---
 
-## 5. Running Tests (optional)
-
-No tests are included yet. For production code you would typically add Pytest and run:
+## 5. Running Tests
 
 ```bash
-pytest
+pytest tests
 ```
 
 ---
