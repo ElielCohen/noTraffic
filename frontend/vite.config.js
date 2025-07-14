@@ -10,5 +10,10 @@ export default defineConfig({
       '/polygon': 'http://localhost:8080',
       '/polygons': 'http://localhost:8080'
     }
+  },
+  test: {
+    globals: true,
+    environment: 'jsdom',
+    setupFiles: './src/setupTests.js'
   }
 }); 
